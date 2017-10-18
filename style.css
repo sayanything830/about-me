@@ -1,0 +1,43 @@
+/* app styles */
+header{
+  background: #444;
+  color: #baddfb; /* hexidecimal RGB format */
+  padding: 20px;
+  font-family: helvetica;
+  text-align: center;
+}
+
+main{
+  font-family: helvetica;
+  background-color: #baddfb;
+}
+
+h1{
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+p{
+  margin-bottom: 20px;
+}
+
+h2{
+  font-size: 20px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  padding-left: 20px;
+}
+
+.favorite{
+  background-color: #444;
+  color: #baddfb;
+  padding: 20px;
+  text-align: center;
+}
+
+img{
+  height: 300px;
+  border-radius: 10px 30px;
+  border: 10px solid #444;
+  margin: 10px
+}
