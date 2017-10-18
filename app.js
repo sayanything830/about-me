@@ -6,14 +6,17 @@ console.log('username:', username);
 
 alert('Alright ' + username + ', I am going to ask you a few questions about Melanie. Let\'s see how you do.');
 
-var counter = 1;
+var counter = 0; //this is how I am tracking total attempts to answer questions
+var correct = 0; //this is how I track total correct answers
+
 var university = prompt('Did Melanie go to a university?');
 console.log('university:', university);
 
 // Here is where I allow upper and lower case answers to be accepted
 if (university.toUpperCase() === 'Y' || university.toUpperCase() === 'YES') {
   alert('That\'s correct!');
-  counter ++;
+  counter ++; //adds it to total attempt counter variable
+  correct ++; //adds it to my correct answer variable
 } else if (university.toUpperCase() === 'N' || university.toUpperCase() === 'NO') {
   alert('Incorrect, she graduated from the University of Washington.');
   counter ++;
@@ -28,6 +31,7 @@ if (degree.toUpperCase() === 'Y' || degree.toUpperCase() === 'YES') {
 } else if (degree.toUpperCase() === 'N' || degree.toUpperCase() === 'NO') {
   alert('Correct! She has a degree in art history.');
   counter ++;
+  correct ++;
 }
 
 var bike = prompt('Does Melanie enjoy riding a bike?');
@@ -36,6 +40,7 @@ console.log('bike rider:', bike);
 if (bike.toUpperCase() === 'Y' || bike.toUpperCase() === 'YES') {
   alert('No doubt, Melanie loves her bike.');
   counter ++;
+  correct ++;
 } else if (bike.toUpperCase() === 'N' || bike.toUpperCase() === 'NO'){
   alert('Incorrect! Just take a look at her computer sometime.');
   counter ++;
@@ -47,18 +52,20 @@ console.log('seattlite:', seattle);
 if (seattle.toUpperCase() === 'Y' || seattle.toUpperCase() === 'YES') {
   alert('Yep, but that doesn\'t make her immune to rainy days.');
   counter ++;
+  correct ++;
 } else if (seattle.toUpperCase() === 'N' || seattle.toUpperCase() === 'NO') {
   alert('Believe it or not, she\'s a true local, but that doesn\'t make her immune to rainy days.');
   counter ++;
 }
 
-var pets = prompt('Last question, does Melanie have any pets?');
+var pets = prompt('Next question, does Melanie have any pets?');
 console.log('pets:', pets);
 
 //these if/else if scenarios got very redundant!!
 if (pets.toUpperCase() === 'Y' || pets.toUpperCase() === 'YES') {
   alert('You got it! She has a 10 pound dog named Beardsley.');
   counter ++;
+  correct ++;
 } else if (pets.toUpperCase() === 'N' || pets.toUpperCase() === 'NO') {
   alert('Not so! She has a 10 pound dog named Beardsley.');
   counter ++;
@@ -66,13 +73,12 @@ if (pets.toUpperCase() === 'Y' || pets.toUpperCase() === 'YES') {
 
 //This is question 6 where I am generating a random number with Math.floor((Math.random())) that will generate a number between 1 and 20.
 var random = Math.floor((Math.random() * 20) + 1);
-console.log('random number:', random);
-var number;
-var attempts = 0;
-
+console.log('random number:', random); //this will print out the random number
+var number; //this is the user input
+var attempts = 0; //this will allow me to limit total attempts
 //Then use a 'while' loop to compare user input to the random number and generate a response accordingly.
 while (number !== random && attempts < 4) {
-  number = parseInt(prompt('How many cups of coffee do I drink?'));
+  number = parseInt(prompt('How many cups of coffee do I drink each day?'));
   console.log('user guess:', number);
   attempts ++;
 
@@ -85,9 +91,14 @@ while (number !== random && attempts < 4) {
   } else if (isNaN(number)) {
     alert('Please give a real number');
     counter ++;
-  } if (attempts = 4) {
+  } else if (number === random) {
+    alert('You got it! Best part of waking up...');
+    correct ++;
+  } if (attempts === 4) {
     alert('sorry, out of tries');
   }
 }
 
-console.log('Attempts:', counter);
+
+alert('You got ' + correct + ' answers right!');
+console.log('Total attempts:', counter);
