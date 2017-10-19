@@ -41,3 +41,9 @@ img{
   border: 10px solid #444;
   margin: 10px
 }
+
+.footer{
+  font-size: 10px;
+  font-family: helvetica;
+  text-align: left;
+}
