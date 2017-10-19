@@ -9,6 +9,26 @@ alert('Alright ' + username + ', I am going to ask you a few questions about Mel
 var counter = 0; //this is how I am tracking total attempts to answer questions
 var correct = 0; //this is how I track total correct answers
 
+//var realanswer ['Y', 'N', 'Y', 'Y', 'Y'];
+//var entry [];
+//var questions ['Did Melanie go to a university?', 'Did she get a degree in science?', 'Does Melanie enjoy riding her bike?', 'Is she from Seattle?', 'Does Melanie have a dog?'];
+//var iterations = 0;
+//var userentry;
+
+//while (iterations < 6) {
+//  userentry = prompt(questions[iterations]);
+//  userentry = userentry.slice(0,1);
+//  userentry = userentry.toUpprCase;
+//  answer.push(userentry);
+//
+//  if (answer[iterations] === correct[iterations]) {
+//    iterations = 6;
+//    break;
+//  }
+//  iterations ++;
+//}
+
+
 var university = prompt('Did Melanie go to a university?');
 console.log('university:', university);
 
