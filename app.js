@@ -27,69 +27,97 @@ var correct = 0; //this is how I track total correct answers
 //  }
 //  iterations ++;
 //}
+var correctAnswers = 0;
+var questions = ['Did Melanie go to a university?', 'Did Melanie get a degree in science?', 'Does Melanie enjoy riding a bike?', 'Is Melanie native to Seattle?', 'Next question, does Melanie have any pets?'];
+var expectedAnswers = ['Y', 'N', 'Y', 'Y', 'Y'];
+var variationArray = ['Yes', 'No', 'Yes', 'Yes', 'Yes'];
+var givenAnswers = [];
 
-
-var university = prompt('Did Melanie go to a university?');
-console.log('university:', university);
-
-// Here is where I allow upper and lower case answers to be accepted
-if (university.toUpperCase() === 'Y' || university.toUpperCase() === 'YES') {
-  alert('That\'s correct!');
-  counter ++; //adds it to total attempt counter variable
-  correct ++; //adds it to my correct answer variable
-} else if (university.toUpperCase() === 'N' || university.toUpperCase() === 'NO') {
-  alert('Incorrect, she graduated from the University of Washington.');
-  counter ++;
+function askQuestions(qArray, gArray, vArray, eArray) {
+  for (var i = 0; i < qArray.length; i++) {
+    console.log('array index', qArray[i]);
+    gArray.push(prompt(qArray[i]));
+  }
+  for (var j = 0; j < qArray.length; j++) {
+    if (gArray[j].toLowerCase() === eArray[j].toLowerCase() || gArray[j].toLowerCase() === vArray[j].toLowerCase()) {
+      correctAnswers++;
+    }
+  }
+  console.log('correct answers', correctAnswers);
+  console.log('correct matches length', correctAnswers === qArray.length);
+  if (correctAnswers === qArray.length) {
+    alert('Awesome! you know me very well!');
+  } else if (correctAnswers > 0 && correctAnswers < qArray.length) {
+    alert('You\'re Partially Right, you got ' + correctAnswers + ' correct.');
+  } else {
+    alert('Sorry, you didn\'t get any right');
+  }
 }
 
-var degree = prompt('Did Melanie get a degree in science? ');
-console.log('science degree:', degree);
+askQuestions(questions, givenAnswers, variationArray, expectedAnswers);
 
-if (degree.toUpperCase() === 'Y' || degree.toUpperCase() === 'YES') {
-  alert('Nope! She has a degree in art history.');
-  counter ++;
-} else if (degree.toUpperCase() === 'N' || degree.toUpperCase() === 'NO') {
-  alert('Correct! She has a degree in art history.');
-  counter ++;
-  correct ++;
-}
 
-var bike = prompt('Does Melanie enjoy riding a bike?');
-console.log('bike rider:', bike);
+// var university = prompt('Did Melanie go to a university?');
+// console.log('university:', university);
+//
+// // Here is where I allow upper and lower case answers to be accepted
+// if (university.toUpperCase() === 'Y' || university.toUpperCase() === 'YES') {
+//   alert('That\'s correct!');
+//   counter ++; //adds it to total attempt counter variable
+//   correct ++; //adds it to my correct answer variable
+// } else if (university.toUpperCase() === 'N' || university.toUpperCase() === 'NO') {
+//   alert('Incorrect, she graduated from the University of Washington.');
+//   counter ++;
+// }
 
-if (bike.toUpperCase() === 'Y' || bike.toUpperCase() === 'YES') {
-  alert('No doubt, Melanie loves her bike.');
-  counter ++;
-  correct ++;
-} else if (bike.toUpperCase() === 'N' || bike.toUpperCase() === 'NO'){
-  alert('Incorrect! Just take a look at her computer sometime.');
-  counter ++;
-}
+// var degree = prompt('Did Melanie get a degree in science?');
+// console.log('science degree:', degree);
+//
+// if (degree.toUpperCase() === 'Y' || degree.toUpperCase() === 'YES') {
+//   alert('Nope! She has a degree in art history.');
+//   counter ++;
+// } else if (degree.toUpperCase() === 'N' || degree.toUpperCase() === 'NO') {
+//   alert('Correct! She has a degree in art history.');
+//   counter ++;
+//   correct ++;
+// }
 
-var seattle = prompt('Is Melanie native to Seattle?');
-console.log('seattlite:', seattle);
+// var bike = prompt('Does Melanie enjoy riding a bike?');
+// console.log('bike rider:', bike);
+//
+// if (bike.toUpperCase() === 'Y' || bike.toUpperCase() === 'YES') {
+//   alert('No doubt, Melanie loves her bike.');
+//   counter ++;
+//   correct ++;
+// } else if (bike.toUpperCase() === 'N' || bike.toUpperCase() === 'NO'){
+//   alert('Incorrect! Just take a look at her computer sometime.');
+//   counter ++;
+// }
 
-if (seattle.toUpperCase() === 'Y' || seattle.toUpperCase() === 'YES') {
-  alert('Yep, but that doesn\'t make her immune to rainy days.');
-  counter ++;
-  correct ++;
-} else if (seattle.toUpperCase() === 'N' || seattle.toUpperCase() === 'NO') {
-  alert('Believe it or not, she\'s a true local, but that doesn\'t make her immune to rainy days.');
-  counter ++;
-}
+// var seattle = prompt('Is Melanie native to Seattle?');
+// console.log('seattlite:', seattle);
+//
+// if (seattle.toUpperCase() === 'Y' || seattle.toUpperCase() === 'YES') {
+//   alert('Yep, but that doesn\'t make her immune to rainy days.');
+//   counter ++;
+//   correct ++;
+// } else if (seattle.toUpperCase() === 'N' || seattle.toUpperCase() === 'NO') {
+//   alert('Believe it or not, she\'s a true local, but that doesn\'t make her immune to rainy days.');
+//   counter ++;
+// }
 
-var pets = prompt('Next question, does Melanie have any pets?');
-console.log('pets:', pets);
-
-//these if/else if scenarios got very redundant!!
-if (pets.toUpperCase() === 'Y' || pets.toUpperCase() === 'YES') {
-  alert('You got it! She has a 10 pound dog named Beardsley.');
-  counter ++;
-  correct ++;
-} else if (pets.toUpperCase() === 'N' || pets.toUpperCase() === 'NO') {
-  alert('Not so! She has a 10 pound dog named Beardsley.');
-  counter ++;
-}
+// var pets = prompt('Next question, does Melanie have any pets?');
+// console.log('pets:', pets);
+//
+// //these if/else if scenarios got very redundant!!
+// if (pets.toUpperCase() === 'Y' || pets.toUpperCase() === 'YES') {
+//   alert('You got it! She has a 10 pound dog named Beardsley.');
+//   counter ++;
+//   correct ++;
+// } else if (pets.toUpperCase() === 'N' || pets.toUpperCase() === 'NO') {
+//   alert('Not so! She has a 10 pound dog named Beardsley.');
+//   counter ++;
+// }
 
 //This is question 6 where I am generating a random number with Math.floor((Math.random())) that will generate a number between 1 and 20.
 var random = Math.floor((Math.random() * 20) + 1);
