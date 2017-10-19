@@ -80,7 +80,7 @@ var attempts = 0; //this will allow me to limit total attempts
 while (number !== random && attempts < 4) {
   number = parseInt(prompt('How many cups of coffee do I drink each day?'));
   console.log('user guess:', number);
-  attempts ++;
+  attempts ++; //counts attempts for each answer given in loop
 
   if (number < random) {
     alert('That\'s not enough!');
@@ -100,45 +100,32 @@ while (number !== random && attempts < 4) {
   }
 }
 
-var places = ['France', 'Iceland', 'Brazil', 'Chile'];
-var attpl = 0;
-var corrtpl = false;
+//question 7 array
+var places = ['france', 'iceland', 'brazil', 'chile'];
+var attpl = 0; //this is how many attempts user has with this question
+var corrtpl = false; //variable that allows my for loop to exist within my while looop
 
-while (attpl < 6 && corrtpl === false) {
+while (attpl < 6 && corrtpl === false) { //user gets 6 attempts and loops through as long as answer is false
   var response = (prompt('One last question, what countries have I visited?'));
-  attpl ++;
-  counter ++;
-  console.log('reply:', response);
+  attpl ++; //counts attempts
+  counter ++; // counts total questions
+  response = response.toLowerCase(); //changes replies to lower case
+  console.log('reply:', response); //logs user's reply
 
-  for (var i = 0; i < places.length; i ++) {
+  for (var i = 0; i < places.length; i ++) { //this is only used if user gueses correctly
 
-    if (response === places[i]) {
+    if (response.toLowerCase() === places[i]) {
       alert('Wow! Good job');
-      break;
       corrtpl = true;
       correct ++;
+      break;
     }
   }
   if (corrtpl === false) {
     alert('Nope, but I\'ll add it to my list!');
   }
 }
-//var guess = prompt('Can you name a country I have visited?');
-//var flag;
 
-//for (var i = 0; i < countries.length; i ++) {
-  //console.log('each iteration', countries[i]);
-
-  //if (guess === countries[i]) {
-    //alert('Nice guess work! Here is a list of some countries I have visited:' + countries[i]);
-    //break;
-  //  flag = true;
-//  }
-//}
-
-//if (!flag) {
-  //alert('Nope, but I\'ll put it on my list of places to visit!');
-//}
-
-alert('You got ' + correct + ' answers right!');
+//now counting total correct answers
+alert('You got ' + correct + ' answers right out of 7 questions');
 console.log('Total attempts:', counter);
