@@ -94,11 +94,51 @@ while (number !== random && attempts < 4) {
   } else if (number === random) {
     alert('You got it! Best part of waking up...');
     correct ++;
+    counter ++;
   } if (attempts === 4) {
     alert('sorry, out of tries');
   }
 }
 
+var places = ['France', 'Iceland', 'Brazil', 'Chile'];
+var attpl = 0;
+var corrtpl = false;
+
+while (attpl < 6 && corrtpl === false) {
+  var response = (prompt('One last question, what countries have I visited?'));
+  attpl ++;
+  counter ++;
+  console.log('reply:', response);
+
+  for (var i = 0; i < places.length; i ++) {
+
+    if (response === places[i]) {
+      alert('Wow! Good job');
+      break;
+      corrtpl = true;
+      correct ++;
+    }
+  }
+  if (corrtpl === false) {
+    alert('Nope, but I\'ll add it to my list!');
+  }
+}
+//var guess = prompt('Can you name a country I have visited?');
+//var flag;
+
+//for (var i = 0; i < countries.length; i ++) {
+  //console.log('each iteration', countries[i]);
+
+  //if (guess === countries[i]) {
+    //alert('Nice guess work! Here is a list of some countries I have visited:' + countries[i]);
+    //break;
+  //  flag = true;
+//  }
+//}
+
+//if (!flag) {
+  //alert('Nope, but I\'ll put it on my list of places to visit!');
+//}
 
 alert('You got ' + correct + ' answers right!');
 console.log('Total attempts:', counter);
