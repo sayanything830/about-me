@@ -30,7 +30,7 @@ var correct = 0; //this is how I track total correct answers
 var correctAnswers = 0;
 var questions = ['Did Melanie go to a university?', 'Did Melanie get a degree in science?', 'Does Melanie enjoy riding a bike?', 'Is Melanie native to Seattle?', 'Next question, does Melanie have any pets?'];
 var expectedAnswers = ['Y', 'N', 'Y', 'Y', 'Y'];
-var variationArray = ['Yes', 'No', 'Yes', 'Yes', 'Yes'];
+var variationAnswers = ['Yes', 'No', 'Yes', 'Yes', 'Yes'];
 var givenAnswers = [];
 
 function askQuestions(qArray, gArray, vArray, eArray) {
@@ -54,9 +54,7 @@ function askQuestions(qArray, gArray, vArray, eArray) {
   }
 }
 
-askQuestions(questions, givenAnswers, variationArray, expectedAnswers);
-
-
+console.log('correct answers after questions', correctAnswers);
 // var university = prompt('Did Melanie go to a university?');
 // console.log('university:', university);
 //
@@ -120,60 +118,72 @@ askQuestions(questions, givenAnswers, variationArray, expectedAnswers);
 // }
 
 //This is question 6 where I am generating a random number with Math.floor((Math.random())) that will generate a number between 1 and 20.
-var random = Math.floor((Math.random() * 20) + 1);
-console.log('random number:', random); //this will print out the random number
-var number; //this is the user input
-var attempts = 0; //this will allow me to limit total attempts
-//Then use a 'while' loop to compare user input to the random number and generate a response accordingly.
-while (number !== random && attempts < 4) {
-  number = parseInt(prompt('How many cups of coffee do I drink each day?'));
-  console.log('user guess:', number);
-  attempts ++; //counts attempts for each answer given in loop
 
-  if (number < random) {
-    alert('That\'s not enough!');
-    counter ++;
-  } else if (number > random) {
-    alert('I like my coffee, but that\'s too much');
-    counter ++;
-  } else if (isNaN(number)) {
-    alert('Please give a real number');
-    counter ++;
-  } else if (number === random) {
-    alert('You got it! Best part of waking up...');
-    correct ++;
-    counter ++;
-  } if (attempts === 4) {
-    alert('sorry, out of tries');
-  }
-}
 
-//question 7 array
-var places = ['france', 'iceland', 'brazil', 'chile'];
-var attpl = 0; //this is how many attempts user has with this question
-var corrtpl = false; //variable that allows my for loop to exist within my while looop
+function randomNumberGame(){
+  var random = Math.floor((Math.random() * 20) + 1);
+  console.log('random number:', random); //this will print out the random number
+  var number; //this is the user input
+  var attempts = 0; //this will allow me to limit total attempts
+  //Then use a 'while' loop to compare user input to the random number and generate a response accordingly.
+  while (number !== random && attempts < 4) {
+    number = parseInt(prompt('How many cups of coffee do I drink each day?'));
+    console.log('user guess:', number);
+    attempts ++; //counts attempts for each answer given in loop
 
-while (attpl < 6 && corrtpl === false) { //user gets 6 attempts and loops through as long as answer is false
-  var response = (prompt('One last question, what countries have I visited?'));
-  attpl ++; //counts attempts
-  counter ++; // counts total questions
-  response = response.toLowerCase(); //changes replies to lower case
-  console.log('reply:', response); //logs user's reply
-
-  for (var i = 0; i < places.length; i ++) { //this is only used if user gueses correctly
-
-    if (response.toLowerCase() === places[i]) {
-      alert('Wow! Good job');
-      corrtpl = true;
+    if (number < random) {
+      alert('That\'s not enough!');
+      counter ++;
+    } else if (number > random) {
+      alert('I like my coffee, but that\'s too much');
+      counter ++;
+    } else if (isNaN(number)) {
+      alert('Please give a real number');
+      counter ++;
+    } else if (number === random) {
+      alert('You got it! Best part of waking up...');
       correct ++;
-      break;
+      counter ++;
+    } if (attempts === 4) {
+      alert('sorry, out of tries');
     }
   }
-  if (corrtpl === false) {
-    alert('Nope, but I\'ll add it to my list!');
+}
+function placesQuestion() {
+  //question 7 array
+  var places = ['france', 'iceland', 'brazil', 'chile'];
+  var attpl = 0; //this is how many attempts user has with this question
+  var corrtpl = false; //variable that allows my for loop to exist within my while looop
+
+  while (attpl < 6 && corrtpl === false) { //user gets 6 attempts and loops through as long as answer is false
+    var response = (prompt('One last question, what countries have I visited?'));
+    attpl ++; //counts attempts
+    counter ++; // counts total questions
+    response = response.toLowerCase(); //changes replies to lower case
+    console.log('reply:', response); //logs user's reply
+
+    for (var i = 0; i < places.length; i ++) { //this is only used if user gueses correctly
+
+      if (response.toLowerCase() === places[i]) {
+        alert('Wow! Good job');
+        corrtpl = true;
+        correct ++;
+        break;
+      }
+    }
+    if (corrtpl === false) {
+      alert('Nope, but I\'ll add it to my list!');
+    }
   }
+
 }
 
+askQuestions(questions, givenAnswers, variationAnswers, expectedAnswers);
+randomNumberGame();
+placesQuestion();
+
 //now counting total correct answers
-alert('You got ' + correct + ' answers right out of 7 questions');
+console.log(correct);
+console.log(correctAnswers);
+alert('You got ' + (correctAnswers + correct) + ' answers right out of 7 questions');
 console.log('Total attempts:', counter);
